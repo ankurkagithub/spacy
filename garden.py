@@ -2,6 +2,7 @@
 
 import spacy #importing spacy
 
+# loading English language
 nlp = spacy.load('en_core_web_sm')
 
 gardenpathSentences = []
@@ -17,6 +18,7 @@ gardenpathSentences.append("The cotton clothing is made of grows in Mississippi.
 gardenpathSentences.append("That Jill is never here hurts.")
 
 for sentence in gardenpathSentences:
+    #loading sentences into spacy nlp model
     doc = nlp(sentence)
     print("Sentence: ", sentence)
     print("NLP DOP: ", doc)
