@@ -20,26 +20,30 @@ gardenpathSentences.append("That Jill is never here hurts.")
 for sentence in gardenpathSentences:
     #loading sentences into spacy nlp model
     doc = nlp(sentence)
-    print("Sentence: ", sentence)
-    print("NLP DOP: ", doc)
+    print("NLP Input: ", doc, "\n")
 
     # Tokenisation without punctuation or whitespace
     output = [(token, token.orth_, token.orth) for token in doc if not \
               token.is_punct | token.is_space]
-    print("Output: ", output)
+    print("Tokenise without punctuation or whitespaces: ")
+    print(output, "\n")
+
+    # Tokenisation with punctuation or whitespace
+    print("Tokenise with punctuation or whitespaces: ")
+    output_pw = [(token, token.orth_, token.orth) for token in doc]
+    print(output_pw, "\n")
+
     # Stopwords
     stop_words = [word for word in doc if word.is_stop == True]
-    print("Stop Word: ",stop_words)
+    print("Stop-words: ",stop_words, "\n")
 
     #Lemmantising
     lemmant = [word.lemma_ for word in doc]
-    print("Lemmant: ",lemmant)
+    print("Lemmantising: ",lemmant, "\n")
 
     # Entity recognition
     entity = [[(i, i.label_, i.label) for i in doc.ents]]
-    print("Entity:", entity)
-
-    print("")
+    print("Entity recognistion:", entity, "\n")
 
 # Comments on Entity
 #1. In sentence 1, "tomorrow" and "day" are recognised as "dates".
